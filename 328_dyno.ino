@@ -89,17 +89,11 @@ void loop() {
       lbft = 0;
     }
 
-  Serial.print("RPM: ");
+  Serial.print("(RPM, lb-ft, HP ), ");
   Serial.print(rpm); 
-  Serial.print(", lb-ft: ");
-  Serial.print(lbft);
-  horsepower = lbft * rpm / 5252;
-  Serial.print(", HP: ");
-  Serial.print(horsepower);
-  Serial.print(", CSV: ");
-  Serial.print(rpm);
   Serial.print(", ");
   Serial.print(lbft);
+  horsepower = lbft * rpm / 5252;
   Serial.print(", ");
   Serial.println(horsepower);
   
