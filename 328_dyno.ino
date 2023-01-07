@@ -42,7 +42,7 @@ void rpm_func()
 void setup() {
 
   tare_offset = EEPROM.get(0, tare_offset); // Byte 0,1 is an int
-  cal_mult = EEPROM.get(2, cal_mult); // Bytes 2-6 are the calibration multiplier (float)
+  cal_mult = EEPROM.get(4, cal_mult); // Bytes 2-6 are the calibration multiplier (float)
   Serial.begin(115200);
   cell.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
   FreqCount.begin(494); // Count the pulses every half a second (-6ms to calibrate for 10Khz correctly)
@@ -74,9 +74,7 @@ void loop() {
     if (FreqCount.available()) 
     {
       unsigned long fcount = FreqCount.read();
-      Serial.print("RPM: ");
       rpm = fcount*30; // 1/2 second sampling with four magnets on disc.
-      Serial.print(rpm); 
     }
   
 
@@ -91,11 +89,20 @@ void loop() {
       lbft = 0;
     }
 
+  Serial.print("RPM: ");
+  Serial.print(rpm); 
   Serial.print(", lb-ft: ");
   Serial.print(lbft);
   horsepower = lbft * rpm / 5252;
   Serial.print(", HP: ");
+  Serial.print(horsepower);
+  Serial.print(", CSV: ");
+  Serial.print(rpm);
+  Serial.print(", ");
+  Serial.print(lbft);
+  Serial.print(", ");
   Serial.println(horsepower);
+  
 
 // Check for received bytes on the serial port (if the user wants us to tare or calibrate.)
 if (Serial.available() > 0) 
