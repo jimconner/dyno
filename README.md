@@ -23,10 +23,10 @@ A 4-magnet rotor disc is attached to the back of the dynanometer and is read usi
 The Dynanometer outputs serial data at 115200bps (8N1) whenever the RPM or Torque is non-zero.
 
 ```
-0:02:27, RPM: 0, lb-ft: 0.0, HP: 0.00
-0:02:28, RPM: 30, lb-ft: 20.78, HP: 0.12
-0:02:29, RPM: 90, lb-ft: 14.81, HP: 0.25
-0:02:29, RPM: 180, lb-ft: 17.35, HP: 0.59
+0:02:27, (RPM, lb-ft, HP ), 0, 0.0, 0.00
+0:02:28, (RPM, lb-ft, HP ), 30, 20.78, 0.12
+0:02:29, (RPM, lb-ft, HP ), 90, 14.81, 0.25
+0:02:29, (RPM, lb-ft, HP ), 180, 17.35, 0.59
 ```
 
 Enabling serial logging in your terminal program will allow this data to be captured and later imported as CSV values into a spreadhseet.
